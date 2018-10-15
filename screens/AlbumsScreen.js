@@ -14,28 +14,32 @@ export default class AlbumScreen extends React.Component {
     super();
 
     this.state = {
-      cardName: 'Some Album'
+      albums: [
+        {
+          title: 'Awakened',
+          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
+        },
+        {
+          title: 'Awakened',
+          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
+        },
+        {
+          title: 'Awakened',
+          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
+        }
+      ]
     }
-
-    this.changeCardName = this.changeCardName.bind(this);
-
-    this.cardNumber= 0;
   }
 
-  changeCardName(){
-    this.setState({
-      cardName: `I am new CardName ${this.cardNumber}`
-    });
-    this.cardNumber++;
-  }
+  renderAlbums(){
+    const { albums } = this.state;
 
-  render() {
-    const { cardName } = this.state;
-
-    return (
-      <ScrollView style={styles.container}>
+    return albums.map((album, index) => {
+      return(
         <Card
-          title={cardName}
+          key = {index}
+          title={album.title}
+          image={{uri: album.image}}
           >
           <Text style={{marginBottom: 10}}>
             The idea with React Native Elements is more about component structure than actual design.
@@ -45,13 +49,18 @@ export default class AlbumScreen extends React.Component {
             backgroundColor='#03A9F4'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='VIEW NOW' />
-          </Card>
-          <Button
-              icon={{name: 'code'}}
-              backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-              title='CHANGE CARD NAME'
-              onPress = {() => this.changeCardName()}/>
+        </Card>
+      )
+    })
+  }
+
+  render() {
+   
+
+    return (
+      <ScrollView style={styles.container}>
+       { this.renderAlbums() }
+        
       </ScrollView>
     );
   }
