@@ -7,11 +7,11 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-import AlbunsScreen from '../screens/AlbunsScreen';
+import AlbumScreen from '../screens/AlbumsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Albuns: AlbunsScreen
+  Albums: AlbumScreen
 });
 
 HomeStack.navigationOptions = {

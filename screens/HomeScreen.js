@@ -23,7 +23,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
          <Button
           title="Go to Albums"
-          onPress={() => this.props.navigation.navigate('Albuns')}
+          onPress={() => this.props.navigation.navigate('Albums')}
         />
       </View>
     );
