@@ -1,6 +1,7 @@
 import axios from 'axios';
+import _ from 'lodash';
 
-const API_KEY = '6c4ZAxHSdqmshyBbZbBsUmsSZiljp1MGz8BjsnzS8CIPmsUKmJ';
+const API_KEY = 'K5SjzJFGu3msh7xkfJG6iLY7BISZp1UkK7GjsnfqsJk1IGY6ZC';
 
 const axiosIntance = axios.create({
   baseURL: 'https://deezerdevs-deezer.p.mashape.com/',
@@ -11,5 +12,10 @@ const axiosIntance = axios.create({
 
 export const searchTracks = singerName => {
   return axiosIntance.get(`search?q=${singerName}`).then(
-    response => response.data.data.map(item => item.album))
+    response => {
+       const albums = response.data.data.map(item => item.album);
+       const uniqueAlbuns = _.uniqBy(albums, 'title');
+
+       return uniqueAlbuns;
+    })
 }

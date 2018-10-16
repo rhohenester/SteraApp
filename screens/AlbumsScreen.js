@@ -21,16 +21,6 @@ export default class AlbumScreen extends React.Component {
     actions.searchTracks('ladygaga').then(albums => this.setState({ albums }));
   }
 
-  /* componentDidMount() {
-    // This warning only appears when 'connections' item is empty
-    return actions.searchTracks('ladygaga').then((albums) => {
-      this.setState({albums});
-    }).catch(error => {
-      console.log(error);
-    })
-  } */
-
-
   render() {
    const { albums } = this.state;
     return (
