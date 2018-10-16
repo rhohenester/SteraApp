@@ -4,6 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { CardList } from '../components/CardList';
+import * as actions from '../actions';
 
 export default class AlbumScreen extends React.Component {
   static navigationOptions = {
@@ -14,21 +15,10 @@ export default class AlbumScreen extends React.Component {
     super();
 
     this.state = {
-      albums: [
-        {
-          title: 'Awakened',
-          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
-        },
-        {
-          title: 'Awakened',
-          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
-        },
-        {
-          title: 'Awakened',
-          image: 'https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2012/09/As-I-Lay-Dying-Awakened1.jpg?fit=700%2C700'
-        }
-      ]
+      albums: []
     }
+
+    actions.searchTracks('ladygaga').then(albums => this.setState({albums}));
   }
 
 
@@ -38,7 +28,7 @@ export default class AlbumScreen extends React.Component {
       <ScrollView style={styles.container}>
         <CardList 
           data={albums} 
-          imageKey={'image'} 
+          imageKey={'cover_big'} 
           titleKey={'title'}
           buttonText= "See the detail"
         />
