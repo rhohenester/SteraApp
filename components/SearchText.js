@@ -1,43 +1,48 @@
 import React from 'react';
-import { Text, Stylesheet } from 'react-native';
-import { FormLabel, FormInput, Button, FormValidation, Divider } from 'react-native-elements';
+import { Text, StyleSheet } from 'react-native';
+import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements'
 
 export class SearchText extends React.Component {
 
-    constructor(){
-        this.state = {
-            value: ''
-        }
-    }
+  constructor() {
+    super();
 
-    componentDidMount(){
-        this.input.focus();
+    this.state = {
+      value: ''
     }
+  }
 
-    onSubmitSearch(){
-        const { SubmitSearch } = this.props;
-        SubmitSearch(this.state.value)
-    }
+  componentDidMount() {
+    this.input.focus();
+  }
 
-    onChange(value){
-        this.setState({value});
-    }
+  onChange(value) {
+    this.setState({value});
+  }
+
+  onSubmitSearch() {
+    const { submitSearch } = this.props;
+    submitSearch(this.state.value);
+  }
 
 
-    render(){
-        return (
-            <React.Fragment>
-                <FormLabel containerStyle={styles.center}>Search an artist</FormLabel>
-                <FormInput ref={input => this.input = input} onChangeText={(event) => this.onChange(event) }/>
-                <FormValidationMessage></FormValidationMessage>
-                <Button title='Search' onPress={() => this.onSubmitSearch()}/>
-            </React.Fragment>
-        )
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <FormLabel containerStyle={styles.center}>Search an artist</FormLabel>
+        <FormInput ref={input => this.input = input} onChangeText={(event) => this.onChange(event) }/>
+        <FormValidationMessage></FormValidationMessage>
+        <Button title='Search' onPress={() => this.onSubmitSearch()}/>
+      </React.Fragment>
+    )
+  }
 }
 
+
+
+
 const styles = StyleSheet.create({
-    center: {
-        alignImages: 'center'
-    }
+  center: {
+    alignItems: 'center'
+  }
 })
