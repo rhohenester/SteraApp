@@ -17,8 +17,10 @@ export default class AlbumScreen extends React.Component {
     this.state = {
       albums: []
     }
+  }
 
-    actions.searchTracks('ladygaga').then(albums => this.setState({ albums }));
+  searchTracks(artist){
+    actions.searchTracks(artist).then(albums => this.setState({ albums }));
   }
 
   render() {
